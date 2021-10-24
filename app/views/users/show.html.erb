@@ -1,0 +1,20 @@
+<%if session[:user_id] == @user.id %>
+<h2>Your Profile</h2>
+<%#show user's profile page with options to edit stuff %>
+<%#if not the user just show the profile page%>
+<%#display current user's navbar%>
+<%else%>
+<h2> <%=@user.username%>'s Profile </h2>
+<%end%>
+
+<h3> Created Threads </h3>
+<% @user.threads.each do |thread| %>
+<%=link_to thread.name, thread_path(thread)%>
+<%end%>
+<h3> Posted On </h3>
+<%@user.posts.each do |post|%>
+<%=post.forum.name %>
+<%end%>
+
+<%=link_to "New Forum", new_forum_path%>
+<%=link_to "All Forums", forums_path%>

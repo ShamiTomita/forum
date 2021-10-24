@@ -1,0 +1,15 @@
+
+<%= form_for @forum do |f| %>
+  <%= f.label "Forum name" %>
+  <%= f.text_field :name %><br>
+  <%= f.hidden_field :user_id, value:current_user.id %>
+
+  <%= f.fields_for :post do |p|%>
+    <%= p.label "Content:" %>
+    <%= p.text_field :details %>
+    <%= p.hidden_field :user_id, value:current_user.id %>
+    <%= p.hidden_field :forum_id, value:@forum.id%>
+    <%end%>
+
+  <%=f.submit%>
+<%end%>
