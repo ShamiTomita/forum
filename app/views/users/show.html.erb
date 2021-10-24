@@ -9,12 +9,14 @@
 
 <h3> Created Threads </h3>
 <% @user.threads.each do |thread| %>
-<%=link_to thread.name, thread_path(thread)%>
+<%=link_to thread.name, forum_path(thread)%><br>
 <%end%>
 <h3> Posted On </h3>
 <%@user.posts.each do |post|%>
-<%=post.forum.name %>
-<%end%>
+<p>Forum Name:<%=link_to post.forum_name, forum_path(post.forum_id) %><br>
+  Comment:"<%=post.comment%>"</p>
 
-<%=link_to "New Forum", new_forum_path%>
+<%end%>
+<br>
+<%=link_to "New Forum", new_user_forum_path(@user)%>
 <%=link_to "All Forums", forums_path%>

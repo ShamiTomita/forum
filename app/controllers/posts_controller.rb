@@ -1,11 +1,22 @@
 class PostsController < ApplicationController
 
   def index
-  end 
+    @posts = Post.all
+  end
+
   def new
+    @post = Post.new
   end
 
   def create
+    @forum = Forum.find(params[:forum_id])
+    @post = @forum.posts.create(post_params)
+    @post.user_id = current_user.id if current_user
+    if @post.save
+      redirect_to forum_path(@forum)
+    else
+      render :new
+    end
   end
 
   def edit

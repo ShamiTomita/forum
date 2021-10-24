@@ -1,1 +1,9 @@
-Hello
+<h1>Hello</h1>
+<h3> All forums </h3>
+<% @forums.each do |forum| %>
+<ul>
+  <li><%= link_to forum.name, forum_path(forum)%><br>
+    <%= forum.created_at%>
+  </li>
+</ul>
+<%end%>

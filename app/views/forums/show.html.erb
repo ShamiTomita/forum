@@ -1,17 +1,12 @@
+Forums
 <h1><%=@forum.name%></h1>
+
 <% @forum.posts.each do |post| %>
-  <%if post == @forum.posts.first %>
-    <h3><%=post.id%></h3>
-    <h3><%=post.comment%></h3>
-    <ul>
-      <li><%=post.user.username%></li>
-      <li><%=post.created%></li>
-    </ul>
-  <%else%>
     <p><%=post.comment%></p>
     <ul>
       <li><%=post.user.username%></li>
-      <li><%=post.created%></li>
+      <li><%=post.created_at%></li>
     </ul>
-    <%end%>
 <%end%>
+<p><%= @forum.posts.count%><p>
+<%= render 'posts/form'%>

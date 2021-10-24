@@ -1,14 +1,14 @@
-
+<%= render partial: "layouts/errors", locals: { object: @user } %>
 <%= form_for @forum do |f| %>
   <%= f.label "Forum name" %>
   <%= f.text_field :name %><br>
   <%= f.hidden_field :user_id, value:current_user.id %>
 
-  <%= f.fields_for :post do |p|%>
+  <%= f.fields_for :posts do |p|%>
     <%= p.label "Content:" %>
-    <%= p.text_field :details %>
+    <%= p.text_field :comment %>
     <%= p.hidden_field :user_id, value:current_user.id %>
-    <%= p.hidden_field :forum_id, value:@forum.id%>
+    <%= p.hidden_field :forum_id, value: @forum.id%>
     <%end%>
 
   <%=f.submit%>

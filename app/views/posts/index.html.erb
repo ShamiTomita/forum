@@ -1,0 +1,7 @@
+<% @posts.each do |post|%>
+<ul>
+<p><strong><%= post.comment %></strong><p>
+<li><%= link_to post.forum_name, forum_path(post.forum_id) %></li>
+<li><%= link_to post.username, user_path(post.user_id) %></li>
+</ul>
+<%end%>

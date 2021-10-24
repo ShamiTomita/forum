@@ -16,6 +16,16 @@ DATA = {
 
 def main
   make users
+  user = User.new(username: "Bob", email: "bob@gmail.com", password: "123")
+  user.save
+  f = Forum.new(name: "New Forum", user_id: user.id)
+  f.save
+  p = Post.new(comment: "Hi diddly doo", user_id: user.id, forum_id: f.id)
+  p.save
+  becky = User.new(username: "Becky", email:"doodoo@gmail.com", password:"123")
+  becky.save
+  becky_post = Post.new(comment:"baby please", user_id:becky.id, forum_id:f.id)
+  becky_post.save
 end
 
 def make_users

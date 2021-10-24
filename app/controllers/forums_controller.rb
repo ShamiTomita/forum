@@ -8,7 +8,8 @@ class ForumsController < ApplicationController
   def create
     @forum = Forum.create(forum_params)
     if @forum.save
-      redirect_to forum_path(@forum)
+      params[:forum][:posts_attributes]["0"]["forum_id"] = @forum.id
+      redirect_to forum_path(@forum.id)
     else
       render :new
     end
@@ -42,9 +43,11 @@ class ForumsController < ApplicationController
 
   private
     def forum_params
-      params.require(:forum).permit(:name, :user_id, :post,
-      post_attributes: [
-        :comment
+      params.require(:forum).permit(:name, :user_id,
+      posts_attributes: [
+        :comment,
+        :user_id,
+        :forum_id
         ])
     end
 end
