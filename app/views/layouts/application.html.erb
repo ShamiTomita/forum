@@ -9,15 +9,35 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if !current_user %>
+          <a class="navbar-brand" href="<%=new_user_path%>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= login_path %>"/>Login<a>
+          <% end %>
+          <% if current_user %>
+          <a class="navbar-brand" href="<%= user_path(current_user)%>"/>Your Profile</a>
+          <a class="navbar-brand" href="<%= users_path%>"/>All Users</a>
+          <a class="navbar-brand" href="<%= posts_path%>"/>All Posts</a>
+          <%= link_to "Log Out", logout_path, class:"navbar-brand",method:'delete'%>
+          <% end %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+
+    <!-- content -->
+    <div class="center"  role="main">
+      <%= yield %>
+    </div>
   </body>
   <br>
   <br>
-  <footer>
-    <%= link_to "All Users", users_path%><br>
-    <%= link_to "All Forums", forums_path%><br>
-    <%= link_to "All Posts", posts_path%><br>
-  </footer>
+
 </html>

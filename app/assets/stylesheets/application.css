@@ -13,3 +13,73 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.center{
+ margin: auto;
+ width: 90%;
+ border: 3px solid purple;
+ padding: 6px;
+ text-align: left;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+
+
+.pic,
+.info {
+  padding: 20px;
+  display: inline-block;
+  background-color: #eeeeee;
+  border-radius: 7px;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.info {
+  height: 290px;
+  text-align: left;
+}
+
+
+
+.navbar-header {
+  background-color: #e295f5;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.navbar-header a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.navbar-header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.navbar-header a.active {
+  background-color: #04AA6D;
+  color: white;
+}

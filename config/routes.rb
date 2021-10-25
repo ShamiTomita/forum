@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static#home'
+  root 'forums#index'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

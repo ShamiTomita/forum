@@ -13,10 +13,9 @@
 <%end%>
 <h3> Posted On </h3>
 <%@user.posts.each do |post|%>
-<p>Forum Name:<%=link_to post.forum_name, forum_path(post.forum_id) %><br>
-  Comment:"<%=post.comment%>"</p>
+<p>Forum Name: <%=link_to post.forum_name, forum_path(post.forum_id) %><br>
+  Comment: "<%=post.comment%>"</p>
 
 <%end%>
 <br>
 <%=link_to "New Forum", new_user_forum_path(@user)%>
-<%=link_to "All Forums", forums_path%>

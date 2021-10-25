@@ -1,9 +1,14 @@
-<h1>Hello</h1>
+<% if !current_user %>
+<h1> Welcome to the Forum please login or signup!</h1>
+
+<%else%>
 <h3> All forums </h3>
 <% @forums.each do |forum| %>
 <ul>
-  <li><%= link_to forum.name, forum_path(forum)%><br>
-    <%= forum.created_at%>
+  <li><%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
+    <%= forum.d%>
+
   </li>
 </ul>
+<%end%>
 <%end%>

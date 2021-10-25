@@ -12,7 +12,10 @@ class Post < ApplicationRecord
   def username
     u = User.find_by(id:self.user_id)
     u.username
-  end 
+  end
 
+  def d
+    self.created_at.strftime("%m/%d/%Y, %I:%M%p")
+  end
 
 end
