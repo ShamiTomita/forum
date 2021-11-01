@@ -7,6 +7,7 @@
 <ul>
   <li><%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
     <%= forum.d%>
+    <%= forum.users.count%> users in conversation
 
   </li>
 </ul>

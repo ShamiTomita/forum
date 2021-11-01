@@ -1,11 +1,11 @@
-Forums
 <h1><%=@forum.name%></h1>
+<h3><%=@forum.d%></h3>
 
 <% @forum.posts.each do |post| %>
     <p><%=post.comment%></p>
     <ul>
       <li><%=post.user.username%></li>
-      <li><%=post.created_at%></li>
+      <li><%=post.d%></li>
     </ul>
 <%end%>
 <p><%= @forum.posts.count%><p>

@@ -6,6 +6,6 @@ class Forum < ApplicationRecord
   accepts_nested_attributes_for :posts
 
   def d
-    self.created_at.strftime("Created %m/%d/%Y, %I:%M%p")
+    self.created_at.strftime("%m/%d/%Y, %I:%M%p")
   end
 end
