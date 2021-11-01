@@ -1,0 +1,17 @@
+h1 {
+  text-decoration: underline;
+}
+
+body {
+  background: #3E4649;
+  color: #f7f7f7;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  border-color: purple;
+  border-width: 10px;
+}
+
+// Import Bootstrap v5
+@import "~bootstrap/scss/bootstrap";

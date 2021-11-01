@@ -7,24 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import $ from 'jquery';
-import 'bootstrap/dist/js/bootstrap';
 
-import '~bootstrap/scss/bootstrap';
-$(document).on('turbolinks:load', function() {
-    $('body').tooltip({
-        selector: '[data-toggle="tooltip"]',
-        container: 'body',
-    });
-
-    $('body').popover({
-        selector: '[data-toggle="popover"]',
-        container: 'body',
-        html: true,
-        trigger: 'hover',
-    });
-});
-
+import '../js/bootstrap_js_files.js'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

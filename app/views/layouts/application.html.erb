@@ -6,34 +6,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+       <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+     </a>
+     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+
         <% if !current_user %>
-          <a class="navbar-brand" href="<%=new_user_path%>"/>Sign Up</a>
-          <a class="navbar-brand" href="<%= login_path %>"/>Login<a>
+          <div class="d-flex justify-content-center py-3">
+            <a type="button" class="btn btn-outline-primary me-2" href="<%=new_user_path%>"/>Sign Up</a>
+            <a type="button" class="btn btn-primary" href="<%= login_path %>"/>Login</a>
+          </div>
           <% end %>
           <% if current_user %>
-          <a class="navbar-brand" href="<%= user_path(current_user)%>"/>Your Profile</a>
-          <a class="navbar-brand" href="<%= users_path%>"/>All Users</a>
-          <a class="navbar-brand" href="<%= posts_path%>"/>All Posts</a>
-          <%= link_to "Log Out", logout_path, class:"navbar-brand",method:'delete'%>
+        <li>  <a class="nav-link px-2 link-secondary" href="<%= root_url %>"/>Home</a></li>
+        <li>  <a class="nav-link px-2 link-dark"" href="<%= user_path(current_user)%>"/>Your Profile</a></li>
+        <li>  <a class="nav-link px-2 link-dark" href="<%= users_path%>"/>All Users</a></li>
+        <li>  <a class="nav-link px-2 link-dark" href="<%= posts_path%>"/>All Posts</a></li>
+        <li><a type="button" class="btn btn-primary"  <%= link_to "Log Out", logout_path, method:'delete'%></a></li>
+
           <% end %>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-
           </ul>
-        </div><!--/.nav-collapse -->
     </div>
-
     <!-- content -->
-    <div class="center"  role="main">
+    <div class="container"  role="main">
       <%= yield %>
     </div>
   </body>
