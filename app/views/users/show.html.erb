@@ -1,10 +1,16 @@
 <%if session[:user_id] == @user.id %>
 <h2>Your Profile</h2>
+<% if @user.avatar.attached?%>
+  <image src="<%=(url_for(@user.avatar))%>">
+<%end%>
 <%#show user's profile page with options to edit stuff %>
 <%#if not the user just show the profile page%>
 <%#display current user's navbar%>
 <%else%>
 <h2> <%=@user.username%>'s Profile </h2>
+<% if @user.avatar.attached?%>
+  <image src="<%=(url_for(@user.avatar))%>">
+<%end%>
 <%end%>
 
 <h3> Created Threads </h3>
