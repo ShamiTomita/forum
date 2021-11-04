@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+
   helper_method :current_user, :logged_in?
   private
 
@@ -13,5 +13,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     User.find_by(id: session[:user_id])
+  end
+
+  def clear_session(*args)
+    args.each do |session_key|
+      session[session_key] = nil
+    end
   end
 end

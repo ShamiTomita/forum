@@ -1,4 +1,10 @@
 class ForumsController < ApplicationController
+  before_action :initialize_search, only: :index
+
+  def index
+    handle_search_name
+    handle_filters
+  end
 
   def new
     @forum = Forum.new
@@ -15,8 +21,10 @@ class ForumsController < ApplicationController
     end
   end
 
-  def index
-    @forums = Forum.all
+
+  def clear
+    clear_session(:search_name, :filter_name, :filter)
+    redirect_to forums_path
   end
 
   def show
@@ -43,11 +51,39 @@ class ForumsController < ApplicationController
 
   private
     def forum_params
-      params.require(:forum).permit(:name, :user_id,
+      params.require(:forum).permit(:name, :user_id, :status, :category,
       posts_attributes: [
         :comment,
         :user_id,
         :forum_id
         ])
     end
+
+  def initialize_search
+    @forums = Forum.most_recent
+    session[:search_name] ||= params[:search_name]
+    session[:filter] = params[:filter]
+    params[:filter_option] = nil if params[:filter_option] == ""
+    session[:filter_option] = params[:filter_option]
+  end
+
+  def handle_search_name
+    if session[:search_name]
+      @forum = Forum.where("name LIKE ?", "%#{session[:search_name]}%")
+    else
+      @forum = Forum.all
+    end
+  end
+
+  def handle_filters
+    if session[:filter_option] && session[:filter] == "most_recent"
+      @forums = Forums.most_recent
+    elsif session[:filter_option] && session[:filter] == "category"
+      @forums = Forum.where(category: session[:filter_option])
+    elsif session[:filter_option] && session[:filter] == "by_popularity"
+      @forums = Forum.by_popularity
+    elsif session[:filter_option] && session[:filter] == "active"
+      @forums = Forums.active
+    end
+  end
 end

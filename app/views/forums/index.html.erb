@@ -3,14 +3,53 @@
 <h1> Welcome to the Forum please login or signup!</h1>
 
 <%else%>
-<h3> All forums </h3>
+<h3> Forums </h3>
+<form action="/forums" method="GET">
+  <input type="text" name="search_name" >
+  <input type="submit" value="Search for Forum">
+</form>
+
+<form action="/forums" method="GET">
+  <label for="filter">Filter Options</label>
+  <select id="filter" name="filter" onchange="this.form.submit()">
+    <option value="">Pick a Filter Option</option>
+    <option value="category" <%= "selected" if session[:filter] == "category" %>>Filter by Category</option>
+    <option value="most_recent" <%= "selected" if session[:filter] == "most_recent" %>>Filter by Most Recent</option>
+    <option value="most_recent" <%= "selected" if session[:filter] == "by_popularity" %>>Filter by Popularity</option>
+    <option value="most_recent" <%= "selected" if session[:filter] == "active" %>>Filter by Most Recent</option>
+  </select>
+  <% if session[:filter] == "category" %>
+    <select name="filter_option" onchange="this.form.submit()">
+      <option value="">Pick a Category</option>
+      <option value="Exercise">Exercise</option>
+      <option value="Workouts">Workouts</option>
+      <option value="Diet">Diet</option>
+      <option value="Competition">Competition</option>
+    </select>
+  <% elsif session[:filter] == "most_recent" %>
+    <select name="filter_option" onchange="this.form.submit()">
+    </select>
+  <% elsif session[:filter] == "by_popularity" %>
+    <select name="filter_option" onchange="this.form.submit()">
+    </select>
+  <% elsif session[:filter] == "active" %>
+     <select name="filter_option" onchange="this.form.submit()">
+     </select>
+  <% end %>
+</form>
+
+<%= link_to "Clear Filter Options", clear_path %>
+<br>
+<br>
+<br>
+
 <% @forums.each do |forum| %>
 <div class="row">
   <div class="col-md-12">
     <ul>
       <li><%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
         <%= forum.d%>
-        <%= forum.users.count%> users in conversation
+        <%= forum.users.uniq.count%> users in conversation
       </li>
     </ul>
   </div>

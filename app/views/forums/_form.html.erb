@@ -1,12 +1,14 @@
 <%= render partial: "layouts/errors", locals: { object: @user } %>
 <%= form_for @forum do |f| %>
   <%= f.label "Forum name" %>
-  <%= f.text_field :name %><br>
-  <%= f.hidden_field :user_id, value:current_user.id %>
-
+  <%= f.text_field :name %>
+  <%=f.label "Category" %>
+  <%= f.select(:category, options_for_select([["Exercise","Exercise"],["Workout","Workout"],["Diet","Diet"],["Competition","Competition"]]))%>
+  <%= f.hidden_field :user_id, value:current_user.id %><br>
+  <br>
   <%= f.fields_for :posts do |p|%>
     <%= p.label "Content:" %>
-    <%= p.text_field :comment %>
+    <%= p.text_area :comment %>
     <%= p.hidden_field :user_id, value:current_user.id %>
     <%= p.hidden_field :forum_id, value: @forum.id%>
     <%end%>

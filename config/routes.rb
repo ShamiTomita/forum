@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy'
 
+
+  get '/forums/clear', to: 'forums#clear', as: 'clear'
+
+
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   resources :sessions
