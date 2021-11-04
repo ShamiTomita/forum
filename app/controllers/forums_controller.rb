@@ -44,6 +44,12 @@ class ForumsController < ApplicationController
     end
   end
 
+  def close
+    @forum = Forum.find_by(id: params[:id])
+    @forum.update_attribute(:status, false)
+    redirect_to forum_path(@forum.id)
+
+  end
 
 
   def destroy
@@ -60,7 +66,7 @@ class ForumsController < ApplicationController
     end
 
   def initialize_search
-    @forums = Forum.most_recent
+    @forums = Forum.all
     session[:search_name] ||= params[:search_name]
     session[:filter] = params[:filter]
     params[:filter_option] = nil if params[:filter_option] == ""

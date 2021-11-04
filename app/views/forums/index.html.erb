@@ -15,8 +15,8 @@
     <option value="">Pick a Filter Option</option>
     <option value="category" <%= "selected" if session[:filter] == "category" %>>Filter by Category</option>
     <option value="most_recent" <%= "selected" if session[:filter] == "most_recent" %>>Filter by Most Recent</option>
-    <option value="most_recent" <%= "selected" if session[:filter] == "by_popularity" %>>Filter by Popularity</option>
-    <option value="most_recent" <%= "selected" if session[:filter] == "active" %>>Filter by Most Recent</option>
+    <option value="by_popularity" <%= "selected" if session[:filter] == "by_popularity" %>>Filter by Popularity</option>
+    <option value="active" <%= "selected" if session[:filter] == "active" %>>Active Forums</option>
   </select>
   <% if session[:filter] == "category" %>
     <select name="filter_option" onchange="this.form.submit()">
@@ -28,12 +28,15 @@
     </select>
   <% elsif session[:filter] == "most_recent" %>
     <select name="filter_option" onchange="this.form.submit()">
+      <%= @forums = Forum.all.most_recent %>
     </select>
   <% elsif session[:filter] == "by_popularity" %>
     <select name="filter_option" onchange="this.form.submit()">
+      <%= @forums = Forum.all.by_popularity %>
     </select>
   <% elsif session[:filter] == "active" %>
      <select name="filter_option" onchange="this.form.submit()">
+       <%= @forums = Forum.all.active %>
      </select>
   <% end %>
 </form>

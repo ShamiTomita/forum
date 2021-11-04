@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy'
 
+  get '/forum/:id/close', to: 'forums#close', as: 'close'
 
   get '/forums/clear', to: 'forums#clear', as: 'clear'
 
