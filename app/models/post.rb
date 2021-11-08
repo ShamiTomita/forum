@@ -14,6 +14,11 @@ class Post < ApplicationRecord
     u.username
   end
 
+  def user
+    u = User.find_by(id:self.user_id)
+    u
+  end
+
   def d
     self.created_at.strftime("%m/%d/%Y, %I:%M%p")
   end

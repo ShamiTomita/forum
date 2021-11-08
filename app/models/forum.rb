@@ -7,7 +7,7 @@ class Forum < ApplicationRecord
 
   scope :most_recent, -> { order(created_at: :desc) }
   scope :active, -> { where(status: true)}
-  scope :by_popularity, -> { Forum.left_joins(:posts).group(:id).order("count(posts.forum_id) desc") }
+  scope :by_popularity, -> { Forum.left_joins(:posts).group(:id).order("count(posts.user_id) asc") }
 
   def d
     self.created_at.strftime("%m/%d/%Y, %I:%M%p")

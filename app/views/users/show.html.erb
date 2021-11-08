@@ -1,7 +1,13 @@
 <%if session[:user_id] == @user.id %>
 <h2>Your Profile</h2>
 <% if @user.avatar.attached?%>
-  <image src="<%=(url_for(@user.avatar))%>">
+  <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="200" alt="User" />
+    <%else%>
+    <%= form_for @user do |f| %>
+      <%= f.label "Add A Profile Photo" %>
+      <%= f.file_field :avatar%><br>
+      <%=f.submit "Add"%>
+      <%end%>
 <%end%>
 <%#show user's profile page with options to edit stuff %>
 <%#if not the user just show the profile page%>
@@ -9,7 +15,7 @@
 <%else%>
 <h2> <%=@user.username%>'s Profile </h2>
 <% if @user.avatar.attached?%>
-  <image src="<%=(url_for(@user.avatar))%>">
+    <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="200" alt="User" />
 <%end%>
 <%end%>
 
@@ -17,11 +23,14 @@
 <% @user.threads.each do |thread| %>
 <%=link_to thread.name, forum_path(thread)%><br>
 <%end%>
-<h3> Posted On </h3>
-<%@user.posts.each do |post|%>
-<p>Forum Name: <%=link_to post.forum_name, forum_path(post.forum_id) %><br>
-  Comment: "<%=post.comment%>"</p>
-
-<%end%>
 <br>
-<%=link_to "New Forum", new_user_forum_path(@user)%>
+<br>
+<br>
+<br>
+
+<h3><%=link_to 'All Posts Made By User', user_post_path(@user)%></h3>
+
+<br>
+<%if session[:user_id] == @user.id %>
+<%=link_to "New Forum", new_user_forum_path(@user)%> #heres my nested route!!!
+<%end%>

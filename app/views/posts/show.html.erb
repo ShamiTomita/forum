@@ -1,0 +1,6 @@
+<% @user.posts.each do |post|%>
+<ul>
+<p><strong><%= post.comment %> <%=post.d%></strong><p>
+<li>Found in: <%= link_to post.forum_name, forum_path(post.forum_id) %></li>
+</ul>
+<%end%>
