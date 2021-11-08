@@ -1,6 +1,11 @@
 <% @user.posts.each do |post|%>
-<ul>
-<p><strong><%= post.comment %> <%=post.d%></strong><p>
-<li>Found in: <%= link_to post.forum_name, forum_path(post.forum_id) %></li>
-</ul>
+<div class="card mb-2">
+    <div class="card-body">
+      <ul>
+        <p><strong><%= post.comment %> <%=post.d%></strong><p>
+        <li>Found in: <%= link_to post.forum_name, forum_path(post.forum_id) %></li>
+        <li><%= time_ago_in_words(post.created_at) %> ago</li>
+      </ul>
+    </div>
+</div>
 <%end%>

@@ -1,8 +1,12 @@
 
 <% @posts.each do |post|%>
-<ul>
-<p><strong><%= post.comment %> <%=post.d%></strong><p>
-<li>Found in: <%= link_to post.forum_name, forum_path(post.forum_id) %></li>
-<li>Written by: <%= link_to post.username, user_path(post.user_id) %></li>
-</ul>
+<div class="card mb-2">
+    <div class="card-body">
+      <ul>
+      <p><strong><%= post.comment %></strong> <%=post.d%><p>
+        <li>Found in: <%= link_to post.forum_name, forum_path(post.forum_id) %></li>
+        <li>Written by: <%= link_to post.username, user_path(post.user_id) %></li>
+      </ul>
+    </div>
+</div>
 <%end%>

@@ -8,21 +8,21 @@
 
 DATA = {
   :user_keys =>
-  ["username", "password", "email"],
+  ["username", "password", "email", "age", "fav_exercise", "gym"],
   :users => [
-    ["Spongebob 'Anchor Arms' Squarepants", "BikiniBottomBoy", "sskrustykrab@clams.com"]
+    ["Spongebob 'Anchor Arms' Squarepants", "BikiniBottomBoy", "sskrustykrab@clams.com", 21, "Plush Squat", "Goo Lagoon Beach Gym"]
   ]
 }
 
 def main
   make users
-  user = User.new(username: "Bob", email: "bob@gmail.com", password: "123")
+  user = User.new(username: "Bob", email: "bob@gmail.com", password: "123", age:34, fav_exercise:"bench press", gym:"Gold's")
   user.save
   f = Forum.new(name: "New Forum", user_id: user.id)
   f.save
   p = Post.new(comment: "Hi diddly doo", user_id: user.id, forum_id: f.id)
   p.save
-  becky = User.new(username: "Becky", email:"doodoo@gmail.com", password:"123")
+  becky = User.new(username: "Becky", email:"doodoo@gmail.com", password:"123", age:24, fav_exercise:"overhead press", gym:"Gold's")
   becky.save
   becky_post = Post.new(comment:"baby please", user_id:becky.id, forum_id:f.id)
   becky_post.save

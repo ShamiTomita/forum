@@ -1,4 +1,5 @@
-<%= form_for (@forum, @forum.post.build) do |p| %>
+<%= render partial: "layouts/errors", locals: { object: @post } %>
+<%= form_for ([@forum, @forum.posts.build]) do |p| %>
 <%= p.label :comment %>
 <%= p.text_field :comment %>
 <%= p.hidden_field :user_id, value:current_user.id %>

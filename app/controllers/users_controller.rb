@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
   def update
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
@@ -30,10 +34,10 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :email, :avatar)
+    params.require(:user).permit(:username, :password, :email, :avatar, :age, :fav_exercise, :gym)
   end
 end

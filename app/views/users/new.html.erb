@@ -4,9 +4,17 @@
   <%= f.label :username %>
   <%= f.text_field :username %><br>
   <%= f.label :email; %>
-  <%= f.password_field :email %><br>
+  <%= f.text_field :email %><br>
   <%= f.label :password %>
   <%= f.password_field :password %><br>
+
+  <%= f.label :age; %>
+  <%= f.number_field :age %><br>
+  <%= f.label :fav_exercise; %>
+  <%= f.text_field :fav_exercise %><br>
+  <%= f.label :gym; %>
+  <%= f.text_field :gym %><br>
+
   <%= f.label "Profile Photo" %>
   <%= f.file_field :avatar%><br>
   <%=f.submit "Signup"%>

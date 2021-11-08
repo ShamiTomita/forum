@@ -1,7 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
 <%if session[:user_id] == @user.id %>
 <h2>Your Profile</h2>
 <% if @user.avatar.attached?%>
-  <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="200" alt="User" />
+  <p><image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="100" alt="User" /></p>
     <%else%>
     <%= form_for @user do |f| %>
       <%= f.label "Add A Profile Photo" %>
@@ -15,22 +18,40 @@
 <%else%>
 <h2> <%=@user.username%>'s Profile </h2>
 <% if @user.avatar.attached?%>
-    <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="200" alt="User" />
+<p><image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" width="200" alt="User" /></p>
 <%end%>
 <%end%>
-
+</div>
+<div class="col-4">
+  <h4>Stats</h4>
+  <p>Age: <%=@user.age%></p>
+  <p>Favorite Exercise: <%=@user.fav_exercise%></p>
+  <p>Gym: <%=@user.gym%></p>
+  <p>Total Posts: <%=@user.posts.count%></p>
+  <small><%=link_to "Edit Stats", edit_user_path(@user)%></small>
+</div>
+<div class="col-6">
 <h3> Created Threads </h3>
+<ol>
 <% @user.threads.each do |thread| %>
-<%=link_to thread.name, forum_path(thread)%><br>
+
+  <li><%=link_to thread.name, forum_path(thread)%></li><br>
+
 <%end%>
-<br>
-<br>
-<br>
-<br>
+</ol>
 
-<h3><%=link_to 'All Posts Made By User', user_post_path(@user)%></h3>
+
+<h4><%=link_to 'All Posts Made By User', user_post_path(@user)%></h4>
 
 <br>
+</div>
+</div>
+
+<br>
+<footer>
 <%if session[:user_id] == @user.id %>
-<%=link_to "New Forum", new_user_forum_path(@user)%> #heres my nested route!!!
+
+<button type="button" class="btn btn-info"><%=link_to "New Forum", new_user_forum_path(@user)%></button>
 <%end%>
+</footer>
+</div>

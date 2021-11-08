@@ -1,7 +1,8 @@
 
 <% if !current_user %>
+<div class="welcome">
 <h1> Welcome to the Forum please login or signup!</h1>
-
+</div>
 <%else%>
 <h3> Forums </h3>
 <form action="/forums" method="GET">
@@ -51,14 +52,16 @@
   <div class="col-md-6">
     <div class="card mb-2">
         <div class="card-body">
-    <ul>
-      <li><%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
-        <%= forum.d%>
+          <image src="<%=(url_for(forum.user.avatar))%>" class="rounded-circle" width="50" alt="User" />
+          <%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
+        <strong><%= forum.category%></strong>
+        <br>
         <%= forum.users.uniq.count%> users in conversation
         <br>
-        <strong><%= forum.category%></strong>
-      </li>
-    </ul>
+          posted <%= time_ago_in_words(forum.created_at) %> ago
+          </br>
+
+
   </div>
 </div>
   </div>
