@@ -51,6 +51,11 @@
 </div>
 
 <div class="inner-main-body">
+  <%if @forums.empty? %>
+  <div class="banner">
+  <strong>There are no forums, please pick a different category</strong>
+  <%end%>
+</div>
 <% @forums.each do |forum| %>
 <div class="row">
   <div class="col-md-6">

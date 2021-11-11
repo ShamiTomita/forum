@@ -4,10 +4,15 @@
 <br>
 
 <% @users.each do |user| %>
-<div class="card mb-2">
-    <div class="card-body">
+<div class="col-9">
+    <div class="col-6">
       <ul>
-        <li><%= link_to user.username, user_path(user)%></li>
+        <% if user.avatar.attached?%>
+          <p><image src="<%=(url_for(user.avatar))%>" class="rounded-circle" width="100" alt="User" /></p>
+          <%end%>
+        <li><%= link_to user.username, user_path(user)%>
+
+        </li>
       </ul>
     </div>
 </div>

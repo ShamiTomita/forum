@@ -29,8 +29,11 @@
         <li>  <a class="nav-link px-2 link-dark"" href="<%= user_path(current_user)%>"/>Your Profile</a></li>
         <li>  <a class="nav-link px-2 link-dark" href="<%= users_path%>"/>All Users</a></li>
         <li>  <a class="nav-link px-2 link-dark" href="<%= posts_path%>"/>All Posts</a></li>
-        <li><a type="button" class="btn btn-primary"  <%= link_to "Log Out", logout_path, method:'delete'%></a></li>
-
+        <li>
+          <%if current_user %>
+          <a type="button" class="btn btn-light" <%=link_to "New Forum", new_user_forum_path(current_user)%></a></li>
+          <%end%>
+        <li><a type="button" class="btn btn-primary"  <%= link_to "Log Out", logout_path, method:'delete', data: { confirm: 'Logout?' }%></a></li>
           <% end %>
           </ul>
     </div>

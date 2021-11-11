@@ -55,7 +55,9 @@ body{
     }
 }
 .header{
-
+  border: 2px groove purple;
+  border-radius: 10px;
+    padding: 8px;
    background-color: #f2e6ff;
    background-size: auto;
 }
@@ -186,14 +188,32 @@ body{
 }
 .col-6
 {
+    padding: 15px;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    min-width: 0px;
     word-wrap: break-word;
     background-color:  #f2f2f2;
     background-clip: border-box;
     border: 10 solid rgba(0,0,0,.125);
     border-style: double;
     border-radius: 15px;
+}
+.thread{
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  word-wrap: break-word;
+  background-color:  #f2f2f2;
+  background-clip: border-box;
+  border: 10 solid rgba(0,0,0,.125);
+  border-style: double;
+  border-radius: 15px;
+}
+textarea {
+  width: 300px;
+  height: 150px;
 }

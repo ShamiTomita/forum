@@ -49,14 +49,16 @@
 
 
 <% if @forum.status == true %>
+<div class="banner">
   <%= render 'posts/form'%>
+</div>
   <footer>
   <% if @forum.user_id == session[:user_id] %>
-  <p><%=link_to "Close Thread", close_path(@forum)%></p>
+  <button type="button" class="btn btn-warning"><%=link_to "Close Thread", close_path(@forum)%></button>
   <%end%>
   </footer>
 <%else %>
   <footer>
-    <strong>This Forum Is Closed.</strong>
+  <button type="button" class="btn btn-warning" disabled>  <strong>This Forum Is Closed.</strong></button>
     </footer>
 <%end%>

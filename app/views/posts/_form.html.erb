@@ -1,6 +1,6 @@
 <%= form_for ([@forum, @forum.posts.build]) do |p| %>
 <%= p.label :comment %>
-<%= p.text_field :comment %>
+<%= p.text_area :comment %>
 <%= p.hidden_field :user_id, value:current_user.id %>
 <%= p.hidden_field :forum_id, value:@forum.id%>
 <%= p.submit %>
