@@ -4,6 +4,8 @@ class Post < ApplicationRecord
 
   validates :comment, presence: true
 
+  scope :most_recent, -> { order(created_at: :desc) }
+
   def forum_name
     f = Forum.find_by(id:self.forum_id)
     f.name

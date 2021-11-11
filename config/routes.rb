@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :messages
   resources :posts
+
   resources :forums do
     resources :posts
   end

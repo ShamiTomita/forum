@@ -4,6 +4,7 @@
 <h1> Welcome to the Forum please login or signup!</h1>
 </div>
 <%else%>
+<div class="banner">
 <h3> Forums </h3>
 <form action="/forums" method="GET">
   <input type="text" name="search_name" >
@@ -19,7 +20,9 @@
     <option value="by_popularity" <%= "selected" if session[:filter] == "by_popularity" %>>Filter by Popularity</option>
     <option value="active" <%= "selected" if session[:filter] == "active" %>>Active Forums</option>
   </select>
-  <% if session[:filter] == "category" %>
+  <% if session[:filter] == "" %>
+    <%=@forums = Forum.all%>
+  <% elsif session[:filter] == "category" %>
     <select name="filter_option" onchange="this.form.submit()">
       <option value="">Pick a Category</option>
       <option value="Exercise">Exercise</option>
@@ -41,11 +44,12 @@
      </select>
   <% end %>
 </form>
-
+</div>
+<br>
+<div class="clear">
 <%= link_to "Clear Filter Options", clear_path %>
-<br>
-<br>
-<br>
+</div>
+
 <div class="inner-main-body">
 <% @forums.each do |forum| %>
 <div class="row">
@@ -53,13 +57,13 @@
     <div class="card mb-2">
         <div class="card-body">
           <image src="<%=(url_for(forum.user.avatar))%>" class="rounded-circle" width="50" alt="User" />
-          <%= link_to forum.name, forum_path(forum)%> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
+        <strong> <%= link_to forum.name, forum_path(forum)%></strong> - created by - <%=link_to forum.user.username, user_path(forum.user)%><br>
         <strong><%= forum.category%></strong>
         <br>
         <%= forum.users.uniq.count%> users in conversation
         <br>
-          posted <%= time_ago_in_words(forum.created_at) %> ago
-          </br>
+          <p>posted <%= time_ago_in_words(forum.created_at) %> ago, most recent post: <%= time_ago_in_words(forum.posts.last.created_at)%> ago</p
+          <br>
 
 
   </div>

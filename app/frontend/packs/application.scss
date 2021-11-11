@@ -16,11 +16,33 @@ body{
   border-style: solid;
   border-width: medium;
   background-color: #f2e6ff;
+  border-radius: 25px;
+  padding: 15px;
+  background-clip: padding-box;
+
+}
+.banner{
+  border-radius: 25px;
+  padding: 15px;
+  background: lightblue;
+  background-clip: padding-box;
+  width: fit-content
+}
+.clear{
+  border: 2px dotted red;
+  border-radius: 25px;
+  padding: 8px;
+  background: lightblue;
+  background-clip: padding-box;
+  width: fit-content
 
 }
 .wrapper{
   background-color: #f2e6ff;
+  border-radius: 25px;
   opacity: 0.9;
+  padding: 15px;
+  width: fit-content
 }
 .inner-wrapper {
     position: relative;
@@ -149,6 +171,7 @@ body{
 }
 
 .col-4{
+    padding: 15px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -159,7 +182,7 @@ body{
     border: 10 solid;
     border-color: #b3b3ff;
     border-style: double;
-    border-radius: .25rem;
+    border-radius: 15px;
 }
 .col-6
 {
@@ -172,5 +195,5 @@ body{
     background-clip: border-box;
     border: 10 solid rgba(0,0,0,.125);
     border-style: double;
-    border-radius: .25rem;
+    border-radius: 15px;
 }

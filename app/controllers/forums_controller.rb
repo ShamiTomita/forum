@@ -1,7 +1,8 @@
 class ForumsController < ApplicationController
-  before_action :initialize_search, only: :index
+
 
   def index
+    initialize_search
     handle_search_name
     handle_filters
   end
@@ -75,9 +76,10 @@ class ForumsController < ApplicationController
 
   def handle_search_name
     if session[:search_name]
-      @forum = Forum.where("name LIKE ?", "%#{session[:search_name]}%")
+      @forums = Forum.where("name LIKE ?", "%#{session[:search_name]}%")
+
     else
-      @forum = Forum.all
+      @forums = Forum.all
     end
   end
 
