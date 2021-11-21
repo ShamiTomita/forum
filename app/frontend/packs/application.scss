@@ -29,7 +29,7 @@ body{
   width: fit-content
 }
 .clear{
-  border: 2px dotted red;
+  border: 2px dotted purple;
   border-radius: 25px;
   padding: 8px;
   background: lightblue;
@@ -168,6 +168,7 @@ body{
 
 .card-body {
     flex: 1 1 auto;
+    
     min-height: 1px;
     padding: 1rem;
 }
