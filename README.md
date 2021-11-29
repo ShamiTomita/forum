@@ -1,5 +1,5 @@
 ##### Weightlifintg Forum
-This rails project is a forum based one with Weightlifintg as its dominant flavor. Users can create accounts, either manually or registering through Google, as well as create their own forums, comment on existing forums, and search and filter all forums. Notable features include filtering different categories, Users having the option to close forums that have created, and Users having the ability to signup with a Profile Photo.
+This rails project is a forum with Weightlifting as its dominant flavor. Users can create accounts, either manually or registering through Google, as well as create their own forums, comment on existing forums, and search and filter all forums. Notable features include filtering different categories, Users having the option to close forums that they have created, and Users having the ability to signup with a Profile Photo.
 
 ##### Prerequisites
 
@@ -11,9 +11,9 @@ The setups steps expect following tools installed on the system.
 
 ##### 1. Check out the repository
 
-```bash
+
 https://github.com/ShamiTomita/forum
-```
+
 
 ##### 2. Bundle Install Gems
 
